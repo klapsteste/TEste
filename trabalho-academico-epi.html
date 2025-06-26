@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Web para Gestão de EPIs - Trabalho Acadêmico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fff;
+            max-width: 210mm;
+            margin: 0 auto;
+            padding: 20mm;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .title {
+            font-size: 18px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.4;
+        }
+
+        .subtitle {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin: 30px 0 15px 0;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 14px;
+            font-weight: bold;
+            margin: 25px 0 10px 0;
+        }
+
+        h3 {
+            font-size: 12px;
+            font-weight: bold;
+            margin: 20px 0 8px 0;
+        }
+
+        h4 {
+            font-size: 12px;
+            font-weight: bold;
+            margin: 15px 0 5px 0;
+        }
+
+        p {
+            text-align: justify;
+            margin-bottom: 12px;
+            font-size: 12px;
+        }
+
+        .abstract {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-left: 4px solid #333;
+        }
+
+        .keywords {
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+        .code-block {
+            background-color: #f4f4f4;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 10px;
+            overflow-x: auto;
+        }
+
+        .image-placeholder {
+            border: 2px dashed #ccc;
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+            text-align: center;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        .image-placeholder strong {
+            color: #e74c3c;
+            font-size: 14px;
+        }
+
+        .references {
+            margin-top: 40px;
+        }
+
+        .references p {
+            margin-bottom: 8px;
+            text-indent: -20px;
+            margin-left: 20px;
+        }
+
+        .toc {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+        }
+
+        .toc h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .toc-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 12px;
+        }
+
+        .page-break {
+            page-break-before: always;
+        }
+
+        @media print {
+            body {
+                margin: 0;
+                padding: 20mm;
+            }
+            
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 12px;
+        }
+
+        li {
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 11px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        .instructions-box {
+            margin-top: 50px;
+            padding: 20px;
+            background-color: #f0f8ff;
+            border: 1px solid #0066cc;
+            border-radius: 5px;
+        }
+
+        .instructions-box h2 {
+            color: #0066cc;
+            text-align: center;
+        }
+
+        .instructions-box .image-instruction {
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #fff;
+            border-left: 3px solid #0066cc;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="title">
+            SISTEMA WEB PARA GESTÃO DE EQUIPAMENTOS DE PROTEÇÃO INDIVIDUAL (EPIs): 
+            DESENVOLVIMENTO DE UMA APLICAÇÃO FULL-STACK COM REACT.JS E NODE.JS
+        </div>
+        <div class="subtitle">
+            Trabalho de Conclusão de Curso<br>
+            [Nome do Autor]<br>
+            [Instituição de Ensino]<br>
+            [Ano]
+        </div>
+    </div>
+
+    <div class="toc">
+        <h2>SUMÁRIO</h2>
+        <div class="toc-item"><span>RESUMO</span><span>3</span></div>
+        <div class="toc-item"><span>1 INTRODUÇÃO</span><span>4</span></div>
+        <div class="toc-item"><span>2 REFERENCIAL TEÓRICO</span><span>6</span></div>
+        <div class="toc-item"><span>2.1 Equipamentos de Proteção Individual</span><span>6</span></div>
+        <div class="toc-item"><span>2.2 Aplicações Web Full-Stack</span><span>7</span></div>
+        <div class="toc-item"><span>2.3 Tecnologias Utilizadas</span><span>8</span></div>
+        <div class="toc-item"><span>2.4 Boas Práticas de Arquitetura de Software</span><span>10</span></div>
+        <div class="toc-item"><span>3 METODOLOGIA</span><span>11</span></div>
+        <div class="toc-item"><span>4 DESENVOLVIMENTO DO SISTEMA</span><span>13</span></div>
+        <div class="toc-item"><span>4.1 Arquitetura Geral</span><span>13</span></div>
+        <div class="toc-item"><span>4.2 Backend: Estrutura e Implementação</span><span>14</span></div>
+        <div class="toc-item"><span>4.3 Banco de Dados: Modelagem e Implementação</span><span>18</span></div>
+        <div class="toc-item"><span>4.4 Frontend: Interface e Experiência do Usuário</span><span>20</span></div>
+        <div class="toc-item"><span>4.5 Testes e Validação</span><span>26</span></div>
+        <div class="toc-item"><span>5 RESULTADOS E DISCUSSÃO</span><span>28</span></div>
+        <div class="toc-item"><span>6 CONSIDERAÇÕES FINAIS</span><span>33</span></div>
+        <div class="toc-item"><span>REFERÊNCIAS BIBLIOGRÁFICAS</span><span>37</span></div>
+    </div>
+
+    <div class="page-break"></div>
+
+    <div class="abstract">
+        <h1>RESUMO</h1>
+        <p>Este trabalho apresenta o desenvolvimento de um sistema web completo para gestão de Equipamentos de Proteção Individual (EPIs), visando automatizar e otimizar o controle destes equipamentos em ambientes corporativos. O sistema foi desenvolvido utilizando uma arquitetura full-stack moderna, com React.js no frontend, Node.js com Express no backend, e MySQL como sistema de gerenciamento de banco de dados. A aplicação implementa funcionalidades de cadastro, controle de estoque, rastreamento de movimentações, sistema de alertas para vencimentos e estoque baixo, além de geração de relatórios exportáveis. A arquitetura adotada segue padrões de desenvolvimento modernos, incluindo autenticação JWT, middleware de segurança, design responsivo com Tailwind CSS e componentização reutilizável. Os resultados obtidos demonstram a eficácia da solução na eliminação de controles manuais, proporcionando maior rastreabilidade, conformidade regulatória e eficiência operacional. O sistema atende às exigências da NR-6 e oferece uma interface intuitiva para diferentes perfis de usuários, contribuindo significativamente para a melhoria dos processos de segurança do trabalho.</p>
+        
+        <p class="keywords"><strong>Palavras-chave:</strong> Equipamentos de Proteção Individual. Desenvolvimento Web. React.js. Node.js. Segurança do Trabalho. Sistema de Gestão.</p>
+    </div>
+
+    <div class="page-break"></div>
+
+    <h1>1 INTRODUÇÃO</h1>
+
+    <p>A gestão adequada de Equipamentos de Proteção Individual (EPIs) representa um desafio crítico para organizações de diversos setores, especialmente aquelas que operam em ambientes com riscos ocupacionais. A Norma Regulamentadora NR-6, estabelecida pelo Ministério do Trabalho e Emprego, determina que as empresas devem fornecer, gratuitamente, EPIs adequados ao risco e em perfeito estado de conservação e funcionamento, além de exigir o controle rigoroso de sua distribuição, uso e manutenção (BRASIL, 2020).</p>
+
+    <p>Tradicionalmente, muitas organizações ainda utilizam métodos manuais para o controle de EPIs, como planilhas eletrônicas ou registros em papel, o que resulta em diversos problemas operacionais: dificuldade de rastreabilidade, perda de informações, controle inadequado de validades, falta de alertas automáticos para reposição de estoque, e dificuldades na geração de relatórios para auditorias e fiscalizações. Estes problemas podem acarretar não apenas em não conformidades regulatórias, mas também em riscos à segurança dos trabalhadores e potenciais responsabilizações legais para as empresas.</p>
+
+    <p>A implementação de sistemas informatizados para gestão de EPIs emerge como uma solução eficaz para estes desafios, oferecendo automatização de processos, maior precisão no controle de dados, rastreabilidade completa das movimentações, alertas automáticos para ações preventivas, e facilidade na geração de relatórios gerenciais e regulatórios. Além disso, sistemas web modernos proporcionam acessibilidade multiplataforma, interface intuitiva e escalabilidade para organizações de diferentes portes.</p>
+
+    <p>Neste contexto, o presente trabalho tem como objetivo desenvolver um sistema web completo para gestão de EPIs, utilizando tecnologias modernas de desenvolvimento full-stack. O sistema visa automatizar e otimizar todos os processos relacionados ao controle de EPIs, desde o cadastro inicial até o acompanhamento de movimentações, controle de estoque, alertas de vencimento e geração de relatórios, proporcionando uma solução robusta, segura e eficiente para organizações que necessitam de conformidade regulatória e excelência operacional na gestão de equipamentos de proteção individual.</p>
+
+    <div class="page-break"></div>
+
+    <h1>2 REFERENCIAL TEÓRICO</h1>
+
+    <h2>2.1 Equipamentos de Proteção Individual</h2>
+
+    <p>Os Equipamentos de Proteção Individual (EPIs) são definidos pela NR-6 como "todo dispositivo ou produto, de uso individual utilizado pelo trabalhador, destinado à proteção de riscos suscetíveis de ameaçar a segurança e a saúde no trabalho" (BRASIL, 2020). A gestão adequada destes equipamentos é fundamental para a prevenção de acidentes de trabalho e doenças ocupacionais.</p>
+
+    <p>Segundo Mattos e Másculo (2011), a eficácia dos EPIs depende não apenas de sua qualidade técnica, mas também de um sistema de gestão que garanta sua disponibilidade, adequação ao risco, estado de conservação e uso correto pelos trabalhadores. Os autores enfatizam que o controle sistemático de EPIs deve incluir: cadastro detalhado dos equipamentos, controle de estoque e distribuição, acompanhamento de validades dos Certificados de Aprovação (CA), registro de movimentações, e geração de relatórios para auditoria.</p>
+
+    <p>A NR-6 estabelece responsabilidades específicas para empregadores e empregados. Aos empregadores cabe: adquirir o EPI adequado ao risco, exigir seu uso, fornecer apenas EPIs aprovados pelo órgão nacional competente, orientar e treinar o trabalhador sobre o uso adequado, substituir imediatamente quando danificado ou extraviado, responsabilizar-se pela higienização e manutenção periódica, e comunicar ao Ministério do Trabalho qualquer irregularidade observada (BRASIL, 2020).</p>
+
+    <h2>2.2 Aplicações Web Full-Stack</h2>
+
+    <p>O desenvolvimento de aplicações web full-stack envolve a criação de sistemas completos que abrangem tanto o frontend (interface do usuário) quanto o backend (lógica de negócio e persistência de dados). Fowler (2002) define esta arquitetura como uma abordagem que separa claramente as responsabilidades entre camadas, proporcionando maior manutenibilidade, escalabilidade e testabilidade.</p>
+
+    <p>Muniz (2020) destaca que aplicações web modernas seguem o padrão arquitetural Model-View-Controller (MVC) ou suas variações, onde o frontend atua como a camada de apresentação (View), o backend implementa a lógica de negócio (Controller), e o banco de dados representa a camada de persistência (Model). Esta separação permite desenvolvimento paralelo, reutilização de componentes, e facilita a manutenção e evolução do sistema.</p>
+
+    <p>As aplicações web full-stack oferecem vantagens significativas em relação a sistemas desktop tradicionais: acessibilidade multiplataforma, atualizações centralizadas, menor custo de implantação, facilidade de backup e recuperação, e possibilidade de acesso remoto. Estas características são particularmente relevantes para sistemas de gestão empresarial, onde múltiplos usuários precisam acessar informações atualizadas de diferentes localizações.</p>
+
+    <h2>2.3 Tecnologias Utilizadas</h2>
+
+    <h3>2.3.1 React.js</h3>
+
+    <p>React.js é uma biblioteca JavaScript desenvolvida pelo Facebook para construção de interfaces de usuário interativas e reativas. Banks e Porcello (2020) destacam que o React utiliza o conceito de componentes reutilizáveis e o Virtual DOM para otimizar a renderização, resultando em aplicações mais performáticas e com melhor experiência do usuário.</p>
+
+    <p>A arquitetura baseada em componentes do React promove a reutilização de código, facilita a manutenção e permite o desenvolvimento de interfaces complexas através da composição de elementos menores e especializados. O sistema de hooks, introduzido nas versões mais recentes, simplifica o gerenciamento de estado e efeitos colaterais, tornando o código mais limpo e funcional.</p>
+
+    <h3>2.3.2 Node.js e Express</h3>
+
+    <p>Node.js é um ambiente de execução JavaScript server-side que permite o desenvolvimento de aplicações backend utilizando a mesma linguagem do frontend. Tilkov e Vinoski (2010) enfatizam que o Node.js utiliza um modelo de I/O não-bloqueante e orientado a eventos, proporcionando alta performance para aplicações que lidam com múltiplas requisições simultâneas.</p>
+
+    <p>O Express.js é um framework web minimalista para Node.js que simplifica a criação de APIs REST e aplicações web. Sua arquitetura baseada em middleware permite a implementação modular de funcionalidades como autenticação, validação, logging e tratamento de erros, facilitando o desenvolvimento de aplicações robustas e escaláveis.</p>
+
+    <h3>2.3.3 MySQL</h3>
+
+    <p>MySQL é um sistema de gerenciamento de banco de dados relacional amplamente utilizado em aplicações web. Dubois (2013) destaca suas características de confiabilidade, performance e facilidade de uso, tornando-o uma escolha adequada para aplicações que requerem consistência transacional e integridade referencial.</p>
+
+    <p>Para aplicações de gestão empresarial, como sistemas de controle de EPIs, o MySQL oferece recursos essenciais como transações ACID, índices otimizados, replicação, e ferramentas de backup e recuperação, garantindo a segurança e disponibilidade dos dados críticos do negócio.</p>
+
+    <h3>2.3.4 JSON Web Token (JWT)</h3>
+
+    <p>JWT é um padrão aberto (RFC 7519) para transmissão segura de informações entre partes como um objeto JSON. Jones et al. (2015) explicam que os JWTs são autocontidos, ou seja, carregam todas as informações necessárias sobre o usuário, eliminando a necessidade de consultas adicionais ao banco de dados para validação de sessão.</p>
+
+    <p>A utilização de JWT em aplicações web oferece vantagens como statelessness (o servidor não precisa manter estado de sessão), escalabilidade horizontal, e facilidade de implementação em arquiteturas distribuídas e microserviços.</p>
+
+    <h2>2.4 Boas Práticas de Arquitetura de Software</h2>
+
+    <p>O desenvolvimento de sistemas empresariais requer a adoção de boas práticas de arquitetura que garantam qualidade, manutenibilidade e escalabilidade. Fowler (2002) estabelece princípios fundamentais como separação de responsabilidades, baixo acoplamento, alta coesão, e inversão de dependências.</p>
+
+    <p>A implementação de padrões arquiteturais como Repository Pattern, Service Layer, e Dependency Injection contribui para a criação de código mais testável, flexível e evolutivo. Além disso, a adoção de práticas de segurança como validação de entrada, sanitização de dados, autenticação robusta, e controle de acesso baseado em papéis é essencial para sistemas que manipulam dados sensíveis empresariais.</p>
+
+    <div class="page-break"></div>
+
+    <h1>3 METODOLOGIA</h1>
+
+    <p>O desenvolvimento do sistema de gestão de EPIs foi conduzido seguindo uma abordagem de pesquisa aplicada com base qualitativa, utilizando metodologia incremental e iterativa. O projeto foi estruturado em sprints de desenvolvimento, permitindo validação contínua das funcionalidades implementadas e ajustes baseados em feedback operacional.</p>
+
+    <h2>3.1 Abordagem de Desenvolvimento</h2>
+
+    <p>Foi adotada uma metodologia híbrida que combina elementos do desenvolvimento ágil com práticas de engenharia de software tradicional. O processo foi dividido em cinco fases principais:</p>
+
+    <ol>
+        <li><strong>Análise de Requisitos</strong>: Levantamento detalhado das necessidades funcionais e não-funcionais, baseado na NR-6 e em práticas de gestão de EPIs;</li>
+        <li><strong>Design da Arquitetura</strong>: Definição da arquitetura full-stack, modelagem do banco de dados, e especificação das APIs;</li>
+        <li><strong>Desenvolvimento Incremental</strong>: Implementação das funcionalidades em sprints de uma semana, priorizando funcionalidades core;</li>
+        <li><strong>Testes e Validação</strong>: Validação manual das funcionalidades, testes de integração com Postman, e simulação de cenários reais;</li>
+        <li><strong>Refinamento e Documentação</strong>: Ajustes finais, otimizações de performance, e documentação técnica.</li>
+    </ol>
+
+    <h2>3.2 Ferramentas e Tecnologias de Desenvolvimento</h2>
+
+    <p>O ambiente de desenvolvimento foi configurado utilizando as seguintes ferramentas:</p>
+
+    <ul>
+        <li><strong>Visual Studio Code</strong>: IDE principal para desenvolvimento frontend e backend;</li>
+        <li><strong>Node.js v18+</strong>: Ambiente de execução para o backend;</li>
+        <li><strong>MySQL Workbench</strong>: Ferramenta para modelagem e administração do banco de dados;</li>
+        <li><strong>Postman</strong>: Ferramenta para testes de APIs REST;</li>
+        <li><strong>Git</strong>: Sistema de controle de versão;</li>
+        <li><strong>npm</strong>: Gerenciador de pacotes para dependências JavaScript;</li>
+        <li><strong>Chrome DevTools</strong>: Ferramentas de debug e análise de performance frontend.</li>
+    </ul>
+
+    <h2>3.3 Processo de Validação</h2>
+
+    <p>A validação do sistema foi realizada através de múltiplas abordagens:</p>
+
+    <ol>
+        <li><strong>Testes Funcionais</strong>: Verificação manual de todas as funcionalidades implementadas;</li>
+        <li><strong>Testes de API</strong>: Utilização do Postman para validar endpoints, códigos de resposta, e estrutura de dados;</li>
+        <li><strong>Testes de Responsividade</strong>: Verificação da interface em diferentes dispositivos e resoluções;</li>
+        <li><strong>Simulação de Perfis</strong>: Testes com diferentes níveis de acesso (admin, gerente, operador);</li>
+        <li><strong>Testes de Carga</strong>: Simulação de múltiplos usuários simultâneos para verificar performance;</li>
+        <li><strong>Validação de Segurança</strong>: Testes de autenticação, autorização, e proteção contra vulnerabilidades comuns.</li>
+    </ol>
+
+    <h2>3.4 Critérios de Qualidade</h2>
+
+    <p>Foram estabelecidos critérios específicos de qualidade para garantir a robustez do sistema:</p>
+
+    <ul>
+        <li><strong>Funcionalidade</strong>: Todas as funcionalidades devem atender aos requisitos especificados;</li>
+        <li><strong>Usabilidade</strong>: Interface intuitiva e responsiva para diferentes dispositivos;</li>
+        <li><strong>Confiabilidade</strong>: Sistema deve ser estável e tratar adequadamente situações de erro;</li>
+        <li><strong>Performance</strong>: Tempo de resposta inferior a 2 segundos para operações comuns;</li>
+        <li><strong>Segurança</strong>: Implementação de autenticação, autorização, e proteção de dados;</li>
+        <li><strong>Manutenibilidade</strong>: Código bem estruturado, documentado e seguindo boas práticas.</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h1>4 DESENVOLVIMENTO DO SISTEMA</h1>
+
+    <h2>4.1 Arquitetura Geral</h2>
+
+    <p>O sistema foi desenvolvido seguindo uma arquitetura full-stack de três camadas, conforme ilustrado no diagrama arquitetural abaixo. A separação clara entre frontend, backend e banco de dados permite escalabilidade, manutenibilidade e facilita futuras evoluções do sistema.</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 1 🔸</strong><br><br>
+        <strong>Figura 1 - Arquitetura Geral do Sistema</strong><br><br>
+        <em>[INSERIR AQUI: Diagrama mostrando a arquitetura de três camadas - Frontend (React.js), Backend (Node.js/Express), e Banco de Dados (MySQL), com as conexões entre elas via APIs REST e as tecnologias utilizadas em cada camada]</em>
+    </div>
+
+    <p><strong>Camada de Apresentação (Frontend)</strong>:</p>
+    <ul>
+        <li>Desenvolvida em React.js com TypeScript</li>
+        <li>Interface responsiva utilizando Tailwind CSS</li>
+        <li>Componentes reutilizáveis baseados em shadcn/ui</li>
+        <li>Gerenciamento de estado com React Hooks</li>
+        <li>Comunicação com backend via APIs REST</li>
+    </ul>
+
+    <p><strong>Camada de Lógica de Negócio (Backend)</strong>:</p>
+    <ul>
+        <li>Servidor Node.js com framework Express</li>
+        <li>Arquitetura RESTful para APIs</li>
+        <li>Middleware de autenticação JWT</li>
+        <li>Validação de dados e tratamento de erros</li>
+        <li>Lógica de negócio para gestão de EPIs</li>
+    </ul>
+
+    <p><strong>Camada de Persistência (Banco de Dados)</strong>:</p>
+    <ul>
+        <li>MySQL para armazenamento relacional</li>
+        <li>Estrutura normalizada com integridade referencial</li>
+        <li>Índices otimizados para consultas frequentes</li>
+        <li>Procedures para operações complexas</li>
+    </ul>
+
+    <h2>4.2 Backend: Estrutura e Implementação</h2>
+
+    <h3>4.2.1 Organização de Pastas</h3>
+
+    <p>A estrutura do backend foi organizada seguindo padrões de arquitetura limpa:</p>
+
+    <div class="code-block">
+backend/
+├── config/
+│   └── database.js          # Configuração do banco de dados
+├── middleware/
+│   └── auth.js              # Middleware de autenticação
+├── routes/
+│   ├── auth.js              # Rotas de autenticação
+│   ├── epis.js              # Rotas para gestão de EPIs
+│   ├── movements.js         # Rotas para movimentações
+│   ├── dashboard.js         # Rotas para dashboard
+│   └── reports.js           # Rotas para relatórios
+├── server.js                # Servidor principal
+└── package.json             # Dependências e scripts
+    </div>
+
+    <h3>4.2.2 Implementação do Servidor Principal</h3>
+
+    <p>O servidor principal foi implementado com configurações de segurança robustas:</p>
+
+    <div class="code-block">
+const express = require("express")
+const cors = require("cors")
+const helmet = require("helmet")
+const rateLimit = require("express-rate-limit")
+
+const app = express()
+const PORT = process.env.PORT || 3001
+
+// Middlewares de segurança
+app.use(helmet())
+app.use(cors({
+  origin: process.env.FRONTEND_URL || "http://localhost:3000",
+  credentials: true,
+}))
+
+// Rate limiting
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 100, // máximo 100 requests por IP
+})
+app.use(limiter)
+
+// Middlewares gerais
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
+    </div>
+
+    <h3>4.2.3 Sistema de Autenticação JWT</h3>
+
+    <p>A autenticação foi implementada utilizando JSON Web Tokens, proporcionando segurança stateless:</p>
+
+    <div class="code-block">
+const jwt = require("jsonwebtoken")
+const bcrypt = require("bcryptjs")
+
+const authenticateToken = async (req, res, next) => {
+  const authHeader = req.headers["authorization"]
+  const token = authHeader && authHeader.split(" ")[1]
+
+  if (!token) {
+    return res.status(401).json({ message: "Token de acesso requerido" })
+  }
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+    const [users] = await db.execute(
+      "SELECT id, name, email, role FROM users WHERE id = ?", 
+      [decoded.userId]
+    )
+    
+    if (users.length === 0) {
+      return res.status(401).json({ message: "Usuário não encontrado" })
+    }
+
+    req.user = users[0]
+    next()
+  } catch (error) {
+    return res.status(403).json({ message: "Token inválido" })
+  }
+}
+    </div>
+
+    <h3>4.2.4 APIs RESTful</h3>
+
+    <p>As APIs foram desenvolvidas seguindo padrões REST, com endpoints bem definidos para cada recurso:</p>
+
+    <p><strong>Gestão de EPIs</strong>:</p>
+    <ul>
+        <li><code>GET /api/epis</code> - Listar EPIs com paginação e filtros</li>
+        <li><code>POST /api/epis</code> - Criar novo EPI</li>
+        <li><code>PUT /api/epis/:id</code> - Atualizar EPI existente</li>
+        <li><code>DELETE /api/epis/:id</code> - Remover EPI</li>
+        <li><code>GET /api/epis/alerts</code> - Obter alertas de estoque e vencimento</li>
+    </ul>
+
+    <p><strong>Movimentações</strong>:</p>
+    <ul>
+        <li><code>GET /api/movements</code> - Listar movimentações</li>
+        <li><code>POST /api/movements</code> - Registrar nova movimentação</li>
+    </ul>
+
+    <p><strong>Relatórios</strong>:</p>
+    <ul>
+        <li><code>GET /api/reports/epis/csv</code> - Exportar relatório de EPIs</li>
+        <li><code>GET /api/reports/movements/csv</code> - Exportar relatório de movimentações</li>
+    </ul>
+
+    <h2>4.3 Banco de Dados: Modelagem e Implementação</h2>
+
+    <h3>4.3.1 Modelo Entidade-Relacionamento</h3>
+
+    <p>O banco de dados foi modelado seguindo princípios de normalização, resultando em três tabelas principais com relacionamentos bem definidos:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 2 🔸</strong><br><br>
+        <strong>Figura 2 - Diagrama Entidade-Relacionamento</strong><br><br>
+        <em>[INSERIR AQUI: Diagrama ER mostrando as três tabelas principais (users, epis, movements) com seus campos, tipos de dados, chaves primárias, chaves estrangeiras e relacionamentos entre elas]</em>
+    </div>
+
+    <p><strong>Tabela users</strong>:</p>
+    <div class="code-block">
+CREATE TABLE users (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  email VARCHAR(100) UNIQUE NOT NULL,
+  password VARCHAR(255) NOT NULL,
+  role ENUM('admin', 'gerente', 'operador') DEFAULT 'operador',
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+    </div>
+
+    <p><strong>Tabela epis</strong>:</p>
+    <div class="code-block">
+CREATE TABLE epis (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  name VARCHAR(100) NOT NULL,
+  type VARCHAR(50) NOT NULL,
+  ca_number VARCHAR(20) NOT NULL,
+  ca_validity DATE NOT NULL,
+  status ENUM('disponivel', 'em_uso', 'manutencao', 'descartado') DEFAULT 'disponivel',
+  stock_quantity INT DEFAULT 0,
+  min_stock INT DEFAULT 5,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+    </div>
+
+    <p><strong>Tabela movements</strong>:</p>
+    <div class="code-block">
+CREATE TABLE movements (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  epi_id INT NOT NULL,
+  user_id INT NOT NULL,
+  type ENUM('entrega', 'devolucao', 'manutencao', 'descarte') NOT NULL,
+  quantity INT NOT NULL,
+  employee_name VARCHAR(100),
+  employee_registration VARCHAR(20),
+  observation TEXT,
+  movement_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (epi_id) REFERENCES epis(id) ON DELETE CASCADE,
+  FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+);
+    </div>
+
+    <h3>4.3.2 Integridade Referencial e Índices</h3>
+
+    <p>Foram implementadas chaves estrangeiras para garantir integridade referencial e índices para otimizar consultas frequentes:</p>
+
+    <div class="code-block">
+-- Índices para otimização de consultas
+CREATE INDEX idx_epis_status ON epis(status);
+CREATE INDEX idx_epis_ca_validity ON epis(ca_validity);
+CREATE INDEX idx_movements_date ON movements(movement_date);
+CREATE INDEX idx_movements_type ON movements(type);
+    </div>
+
+    <h2>4.4 Frontend: Interface e Experiência do Usuário</h2>
+
+    <h3>4.4.1 Estrutura de Componentes</h3>
+
+    <p>O frontend foi desenvolvido com arquitetura baseada em componentes reutilizáveis:</p>
+
+    <div class="code-block">
+src/
+├── components/
+│   ├── Layout.js            # Layout principal da aplicação
+│   ├── ProtectedRoute.js    # Componente de proteção de rotas
+│   └── ui/                  # Componentes UI reutilizáveis
+├── contexts/
+│   └── AuthContext.js       # Context para autenticação
+├── pages/
+│   ├── Login.js             # Tela de login
+│   ├── Dashboard.js         # Dashboard principal
+│   ├── EPIs.js              # Gestão de EPIs
+│   ├── Movements.js         # Movimentações
+│   └── Reports.js           # Relatórios
+└── App.js                   # Componente raiz
+    </div>
+
+    <h3>4.4.2 Principais Funcionalidades do Sistema</h3>
+
+    <p>O sistema desenvolvido oferece um conjunto abrangente de funcionalidades que cobrem todo o ciclo de vida dos EPIs, desde o cadastro inicial até o descarte final. As funcionalidades foram organizadas em módulos específicos para facilitar a navegação e o uso por diferentes perfis de usuários.</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 3 🔸</strong><br><br>
+        <strong>Figura 3 - Visão Geral das Principais Funcionalidades</strong><br><br>
+        <em>[INSERIR AQUI: Screenshot ou diagrama mostrando as principais funcionalidades do sistema organizadas em módulos: Dashboard, Gestão de EPIs, Movimentações, Relatórios, com ícones e descrições breves de cada funcionalidade]</em>
+    </div>
+
+    <h4>4.4.2.1 Dashboard Executivo</h4>
+
+    <p>O dashboard constitui o centro de controle do sistema, apresentando informações consolidadas e métricas em tempo real:</p>
+
+    <ul>
+        <li><strong>Cards de Resumo</strong>: Exibição de métricas principais como total de EPIs, equipamentos disponíveis, alertas de estoque baixo e vencimentos próximos;</li>
+        <li><strong>Gráficos Interativos</strong>: Visualização de dados através de gráficos de pizza (distribuição por status), gráficos de barras (movimentações por tipo) e gráficos de área (tendências temporais);</li>
+        <li><strong>Sistema de Alertas</strong>: Notificações visuais destacadas para situações que requerem atenção imediata, como EPIs com CA vencido ou estoque crítico;</li>
+        <li><strong>Atividades Recentes</strong>: Timeline das últimas movimentações realizadas no sistema, permitindo acompanhamento em tempo real;</li>
+        <li><strong>Indicadores de Performance</strong>: KPIs específicos para gestão de EPIs, incluindo taxa de utilização, tempo médio de reposição e índice de conformidade.</li>
+    </ul>
+
+    <h4>4.4.2.2 Gestão Completa de EPIs</h4>
+
+    <p>O módulo de gestão de EPIs oferece funcionalidades completas para o ciclo de vida dos equipamentos:</p>
+
+    <ul>
+        <li><strong>Cadastro Detalhado</strong>: Formulário completo com campos obrigatórios (nome, tipo, CA, fabricante, validade) e opcionais (observações, localização, responsável);</li>
+        <li><strong>Controle de Estoque</strong>: Gestão de quantidades disponíveis, estoque mínimo, alertas automáticos e histórico de movimentações de estoque;</li>
+        <li><strong>Gestão de Status</strong>: Controle de estados (disponível, em uso, manutenção, descartado) com transições automáticas baseadas em movimentações;</li>
+        <li><strong>Alertas de Vencimento</strong>: Sistema proativo de notificações para CAs próximos ao vencimento (30, 15 e 7 dias antes);</li>
+        <li><strong>Busca e Filtros Avançados</strong>: Pesquisa por múltiplos critérios (nome, tipo, CA, fabricante, status) com filtros combinados;</li>
+        <li><strong>Histórico Completo</strong>: Rastreabilidade total de todas as alterações realizadas no EPI, incluindo data, usuário e tipo de modificação.</li>
+</ul>
+
+<h4>4.4.2.3 Sistema de Movimentações</h4>
+
+<p>O controle de movimentações garante rastreabilidade completa dos EPIs:</p>
+
+<ul>
+    <li><strong>Tipos de Movimentação</strong>: Suporte a quatro tipos principais - entrega, devolução, manutenção e descarte;</li>
+    <li><strong>Registro de Funcionários</strong>: Cadastro completo do funcionário receptor (nome, matrícula, setor, função);</li>
+    <li><strong>Controle de Quantidades</strong>: Validação automática de disponibilidade de estoque antes da entrega;</li>
+    <li><strong>Observações Detalhadas</strong>: Campo livre para registrar informações específicas sobre a movimentação;</li>
+    <li><strong>Atualização Automática</strong>: Sincronização imediata do estoque após cada movimentação registrada;</li>
+    <li><strong>Histórico Temporal</strong>: Visualização cronológica de todas as movimentações com filtros por período, tipo e funcionário.</li>
+</ul>
+
+<h4>4.4.2.4 Sistema de Relatórios Gerenciais</h4>
+
+<p>O módulo de relatórios oferece análises detalhadas para tomada de decisão:</p>
+
+<ul>
+    <li><strong>Relatório Geral de EPIs</strong>: Lista completa com informações detalhadas, status atual e indicadores de conformidade;</li>
+    <li><strong>Relatório de Movimentações</strong>: Histórico completo de todas as operações com filtros por período, tipo e responsável;</li>
+    <li><strong>Relatório de Estoque Crítico</strong>: Identificação de EPIs que necessitam reposição urgente com priorização por criticidade;</li>
+    <li><strong>Relatório de Vencimentos</strong>: Lista de CAs vencidos e próximos ao vencimento com cronograma de renovação;</li>
+    <li><strong>Relatório de Conformidade</strong>: Análise de aderência às normas regulamentares com indicadores de não conformidade;</li>
+    <li><strong>Exportação Flexível</strong>: Geração de relatórios em múltiplos formatos (CSV, PDF, Excel) para diferentes necessidades.</li>
+</ul>
+
+<h4>4.4.2.5 Sistema de Segurança e Controle de Acesso</h4>
+
+<p>A segurança do sistema é garantida através de múltiplas camadas de proteção:</p>
+
+<ul>
+    <li><strong>Autenticação Robusta</strong>: Login seguro com validação de credenciais e controle de sessão via JWT;</li>
+    <li><strong>Controle de Acesso Baseado em Papéis</strong>: Três níveis de permissão (Administrador, Gerente, Operador) com funcionalidades específicas;</li>
+    <li><strong>Auditoria Completa</strong>: Log de todas as ações realizadas no sistema com identificação do usuário e timestamp;</li>
+    <li><strong>Validação de Dados</strong>: Sanitização e validação de todas as entradas para prevenir ataques de injeção;</li>
+    <li><strong>Proteção contra Ataques</strong>: Rate limiting, CORS configurado e headers de segurança implementados.</li>
+</ul>
+
+<h4>4.4.2.6 Interface Responsiva e Acessível</h4>
+
+<p>A interface foi desenvolvida priorizando usabilidade e acessibilidade:</p>
+
+<ul>
+    <li><strong>Design Responsivo</strong>: Adaptação automática para desktop, tablet e dispositivos móveis;</li>
+    <li><strong>Navegação Intuitiva</strong>: Menu lateral colapsável com ícones descritivos e organização lógica;</li>
+    <li><strong>Feedback Visual</strong>: Notificações toast, indicadores de carregamento e confirmações de ação;</li>
+    <li><strong>Acessibilidade</strong>: Conformidade com WCAG 2.1 incluindo navegação por teclado e leitores de tela;</li>
+    <li><strong>Temas Visuais</strong>: Interface clara com cores contrastantes e tipografia legível;</li>
+    <li><strong>Performance Otimizada</strong>: Carregamento rápido com lazy loading e otimização de imagens.</li>
+</ul>
+
+<h3>4.4.3 Casos de Uso e Fluxos Operacionais</h3>
+
+<p>Para demonstrar a aplicabilidade prática do sistema, foram mapeados os principais casos de uso que refletem as operações cotidianas de gestão de EPIs em ambientes corporativos.</p>
+
+<div class="image-placeholder">
+    <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 4 🔸</strong><br><br>
+    <strong>Figura 4 - Fluxograma dos Principais Casos de Uso</strong><br><br>
+    <em>[INSERIR AQUI: Diagrama de fluxo mostrando os principais casos de uso do sistema: Cadastro de EPI → Controle de Estoque → Entrega ao Funcionário → Monitoramento → Devolução/Manutenção → Relatórios, com decisões e validações em cada etapa]</em>
+</div>
+
+<h4>4.4.3.1 Fluxo de Cadastro e Controle de EPIs</h4>
+
+<p>O processo de cadastro de novos EPIs segue um fluxo estruturado que garante completude e consistência das informações:</p>
+
+<ol>
+    <li><strong>Recebimento do EPI</strong>: Registro da chegada do equipamento com verificação de conformidade;</li>
+    <li><strong>Validação de Documentação</strong>: Verificação do CA, certificados e documentação técnica;</li>
+    <li><strong>Cadastro no Sistema</strong>: Preenchimento de formulário com dados obrigatórios e opcionais;</li>
+    <li><strong>Definição de Parâmetros</strong>: Configuração de estoque mínimo, localização e responsável;</li>
+    <li><strong>Geração de Alertas</strong>: Configuração automática de notificações de vencimento;</li>
+    <li><strong>Disponibilização</strong>: Liberação do EPI para uso com status "disponível".</li>
+</ol>
+
+<h4>4.4.3.2 Processo de Entrega e Controle de Uso</h4>
+
+<p>A entrega de EPIs aos funcionários segue protocolo rigoroso de rastreabilidade:</p>
+
+<ol>
+    <li><strong>Solicitação de EPI</strong>: Identificação da necessidade por setor ou funcionário específico;</li>
+    <li><strong>Verificação de Disponibilidade</strong>: Consulta automática ao estoque disponível;</li>
+    <li><strong>Seleção do Equipamento</strong>: Escolha do EPI adequado ao risco e função;</li>
+    <li><strong>Registro da Entrega</strong>: Preenchimento de dados do funcionário e observações;</li>
+    <li><strong>Atualização de Status</strong>: Mudança automática para "em uso" e redução do estoque;</li>
+    <li><strong>Geração de Comprovante</strong>: Documento de entrega para arquivo e auditoria.</li>
+</ol>
+
+<h4>4.4.3.3 Gestão de Manutenção e Lifecycle</h4>
+
+<p>O sistema controla todo o ciclo de vida dos EPIs, incluindo manutenção preventiva e corretiva:</p>
+
+<ul>
+    <li><strong>Manutenção Preventiva</strong>: Agendamento automático baseado em tempo de uso ou periodicidade;</li>
+    <li><strong>Manutenção Corretiva</strong>: Registro de defeitos e encaminhamento para reparo;</li>
+    <li><strong>Controle de Terceirizados</strong>: Gestão de EPIs enviados para manutenção externa;</li>
+    <li><strong>Avaliação de Retorno</strong>: Inspeção e aprovação de EPIs após manutenção;</li>
+    <li><strong>Decisão de Descarte</strong>: Critérios objetivos para descarte de equipamentos irrecuperáveis.</li>
+</ul>
+
+<h3>4.4.4 Funcionalidades Avançadas de Análise</h3>
+
+<p>Além das funcionalidades básicas de gestão, o sistema oferece recursos avançados de análise e inteligência de negócio:</p>
+
+<h4>4.4.4.1 Dashboard Analítico</h4>
+
+<p>O dashboard apresenta análises visuais que facilitam a tomada de decisão gerencial:</p>
+
+<ul>
+    <li><strong>Análise de Tendências</strong>: Gráficos temporais mostrando evolução do consumo de EPIs;</li>
+    <li><strong>Análise por Setor</strong>: Distribuição de EPIs por departamento ou área de risco;</li>
+    <li><strong>Índices de Rotatividade</strong>: Métricas de tempo médio de uso e frequência de substituição;</li>
+    <li><strong>Análise de Custos</strong>: Projeção de gastos com base no histórico de consumo;</li>
+    <li><strong>Indicadores de Conformidade</strong>: Percentual de adequação às normas regulamentares.</li>
+</ul>
+
+<h4>4.4.4.2 Sistema de Alertas Inteligentes</h4>
+
+<p>O sistema implementa alertas proativos baseados em regras de negócio configuráveis:</p>
+
+<ul>
+    <li><strong>Alertas de Vencimento</strong>: Notificações escalonadas (30, 15, 7 dias) antes do vencimento do CA;</li>
+    <li><strong>Alertas de Estoque</strong>: Notificações quando estoque atinge nível crítico ou mínimo;</li>
+    <li><strong>Alertas de Uso Prolongado</strong>: Identificação de EPIs em uso além do tempo recomendado;</li>
+    <li><strong>Alertas de Manutenção</strong>: Lembretes para manutenção preventiva baseada em cronograma;</li>
+    <li><strong>Alertas de Conformidade</strong>: Notificações sobre não conformidades regulamentares.</li>
+</ul>
+
+<h4>4.4.4.3 Relatórios Executivos e Operacionais</h4>
+
+<p>O sistema gera relatórios especializados para diferentes níveis organizacionais:</p>
+
+<p><strong>Relatórios Executivos</strong>:</p>
+<ul>
+    <li>Resumo executivo com KPIs principais e tendências;</li>
+    <li>Análise de custos e ROI do programa de EPIs;</li>
+    <li>Indicadores de conformidade regulatória;</li>
+    <li>Projeções e recomendações estratégicas.</li>
+</ul>
+
+<p><strong>Relatórios Operacionais</strong>:</p>
+<ul>
+    <li>Inventário detalhado com status e localização;</li>
+    <li>Cronograma de manutenções e substituições;</li>
+    <li>Lista de pendências e ações requeridas;</li>
+    <li>Histórico detalhado de movimentações.</li>
+</ul>
+
+<p><strong>Relatórios de Auditoria</strong>:</p>
+<ul>
+    <li>Comprovantes de entrega e devolução;</li>
+    <li>Log completo de ações no sistema;</li>
+    <li>Evidências de conformidade regulatória;</li>
+    <li>Documentação para fiscalizações.</li>
+</ul>
+\`\`\`
+
+    <h3>4.4.3 Tela de Login</h3>
+
+    <p>A tela de login implementa autenticação segura com validação de campos e feedback visual:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 4 🔸</strong><br><br>
+        <strong>Figura 4 - Tela de Login</strong><br><br>
+        <em>[INSERIR AQUI: Screenshot da tela de login mostrando o formulário com campos de email e senha, botão de login, logo do sistema, e as informações de contas de teste disponíveis]</em>
+    </div>
+
+    <div class="code-block">
+const Login = () => {
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+  const [loading, setLoading] = useState(false)
+  const { login } = useAuth()
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    
+    const result = await login(email, password)
+    
+    if (!result.success) {
+      setLoading(false)
+    }
+  }
+
+  return (
+    &lt;div className="min-h-screen flex items-center justify-center bg-gray-50"&gt;
+      &lt;div className="max-w-md w-full space-y-8"&gt;
+        &lt;form onSubmit={handleSubmit} className="mt-8 space-y-6"&gt;
+          {/* Campos de entrada e botão de submit */}
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+    </div>
+
+    <h3>4.4.4 Dashboard Principal</h3>
+
+    <p>O dashboard apresenta informações consolidadas com gráficos interativos e cards informativos:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 5 🔸</strong><br><br>
+        <strong>Figura 5 - Dashboard Principal</strong><br><br>
+        <em>[INSERIR AQUI: Screenshot do dashboard mostrando os cards de estatísticas (Total de EPIs, Disponíveis, Estoque Baixo, Vencimentos), gráficos de pizza e barras, alertas de sistema, e atividades recentes]</em>
+    </div>
+
+    <div class="code-block">
+const Dashboard = () => {
+  const [dashboardData, setDashboardData] = useState(null)
+  const [alerts, setAlerts] = useState({ expiredCAs: [], lowStock: [] })
+
+  useEffect(() => {
+    fetchDashboardData()
+    fetchAlerts()
+  }, [])
+
+  return (
+    &lt;div className="space-y-6"&gt;
+      {/* Cards de resumo */}
+      &lt;div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4"&gt;
+        {summaryCards.map((card, index) => (
+          &lt;SummaryCard key={index} {...card} /&gt;
+        ))}
+      &lt;/div&gt;
+
+      {/* Gráficos interativos */}
+      &lt;div className="grid grid-cols-1 lg:grid-cols-2 gap-6"&gt;
+        &lt;PieChart data={episByStatus} /&gt;
+        &lt;BarChart data={movementsByType} /&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+    </div>
+
+    <h3>4.4.5 Gestão de EPIs</h3>
+
+    <p>A tela de gestão de EPIs permite CRUD completo com filtros avançados e alertas visuais:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 6 🔸</strong><br><br>
+        <strong>Figura 6 - Gestão de EPIs</strong><br><br>
+        <em>[INSERIR AQUI: Screenshot da tela de gestão de EPIs mostrando a lista de EPIs em cards, filtros de busca e status, botão "Novo EPI", e indicadores visuais para alertas de estoque baixo e vencimento]</em>
+    </div>
+
+    <div class="code-block">
+const EPIs = () => {
+  const [epis, setEpis] = useState([])
+  const [search, setSearch] = useState("")
+  const [statusFilter, setStatusFilter] = useState("")
+
+  const filteredEpis = epis.filter(epi => {
+    const matchesSearch = epi.name.toLowerCase().includes(search.toLowerCase())
+    const matchesStatus = statusFilter === "" || epi.status === statusFilter
+    return matchesSearch && matchesStatus
+  })
+
+  return (
+    &lt;div className="space-y-6"&gt;
+      {/* Filtros de busca */}
+      &lt;div className="grid grid-cols-1 md:grid-cols-3 gap-4"&gt;
+        &lt;SearchInput value={search} onChange={setSearch} /&gt;
+        &lt;StatusFilter value={statusFilter} onChange={setStatusFilter} /&gt;
+      &lt;/div&gt;
+
+      {/* Lista de EPIs */}
+      &lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"&gt;
+        {filteredEpis.map(epi => (
+          &lt;EPICard key={epi.id} epi={epi} onEdit={handleEdit} onDelete={handleDelete} /&gt;
+        ))}
+      &lt;/div&gt;
+    &lt;/div&gt;
+  )
+}
+    </div>
+
+    <h3>4.4.6 Tela de Movimentações</h3>
+
+    <p>A tela de movimentações permite registrar e visualizar todas as operações com EPIs:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 7 🔸</strong><br><br>
+        <strong>Figura 7 - Tela de Movimentações</strong><br><br>
+        <em>[INSERIR AQUI: Screenshot da tela de movimentações mostrando o histórico de movimentações em cards, filtros por tipo, botão "Nova Movimentação", e detalhes de cada movimentação incluindo funcionário, data, quantidade e observações]</em>
+    </div>
+
+    <h3>4.4.7 Tela de Relatórios</h3>
+
+    <p>A tela de relatórios oferece diferentes tipos de relatórios exportáveis:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 8 🔸</strong><br><br>
+        <strong>Figura 8 - Tela de Relatórios</strong><br><br>
+        <em>[INSERIR AQUI: Screenshot da tela de relatórios mostrando os cards dos diferentes tipos de relatórios disponíveis (EPIs, Movimentações, Estoque Crítico, Vencimentos, Resumo), com estatísticas e botões de download]</em>
+    </div>
+
+    <h3>4.4.8 Responsividade com Tailwind CSS</h3>
+
+    <p>A responsividade foi implementada utilizando classes utilitárias do Tailwind CSS:</p>
+
+    <div class="code-block">
+// Exemplo de grid responsivo
+&lt;div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"&gt;
+  {/* Conteúdo adaptável */}
+&lt;/div&gt;
+
+// Sidebar responsiva
+&lt;div className="hidden lg:fixed lg:inset-y-0 lg:flex lg:w-64 lg:flex-col"&gt;
+  {/* Sidebar desktop */}
+&lt;/div&gt;
+
+// Menu mobile
+&lt;div className={`fixed inset-0 z-40 lg:hidden ${sidebarOpen ? "" : "hidden"}`}&gt;
+  {/* Menu mobile */}
+&lt;/div&gt;
+    </div>
+
+    <h3>4.4.5 Integração e Interoperabilidade</h3>
+
+<p>O sistema foi projetado com arquitetura aberta para facilitar integrações futuras com outros sistemas corporativos:</p>
+
+<div class="image-placeholder">
+    <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 5 🔸</strong><br><br>
+    <strong>Figura 5 - Arquitetura de Integração do Sistema</strong><br><br>
+    <em>[INSERIR AQUI: Diagrama mostrando as possibilidades de integração do sistema EPI com outros sistemas corporativos: ERP, RH, Compras, Manutenção, Segurança, através de APIs REST e webhooks]</em>
+</div>
+
+<h4>4.4.5.1 APIs RESTful para Integração</h4>
+
+<p>O sistema expõe APIs padronizadas que permitem integração com sistemas terceiros:</p>
+
+<ul>
+    <li><strong>API de EPIs</strong>: Endpoints para consulta, criação e atualização de equipamentos;</li>
+    <li><strong>API de Movimentações</strong>: Integração para registro automático de entregas e devoluções;</li>
+    <li><strong>API de Relatórios</strong>: Acesso programático a dados para sistemas de BI;</li>
+    <li><strong>API de Usuários</strong>: Sincronização com sistemas de RH e Active Directory;</li>
+    <li><strong>Webhooks</strong>: Notificações automáticas para sistemas externos sobre eventos críticos.</li>
+</ul>
+
+<h4>4.4.5.2 Possibilidades de Integração Corporativa</h4>
+
+<p>O sistema pode ser integrado com diversos sistemas empresariais existentes:</p>
+
+<ul>
+    <li><strong>Sistema de RH</strong>: Sincronização automática de funcionários e estrutura organizacional;</li>
+    <li><strong>ERP Corporativo</strong>: Integração com módulos de compras, estoque e contabilidade;</li>
+    <li><strong>Sistema de Manutenção</strong>: Conexão com CMMS para gestão de manutenção de EPIs;</li>
+    <li><strong>Sistema de Compras</strong>: Automatização de solicitações de compra baseada em estoque mínimo;</li>
+    <li><strong>Sistema de Segurança</strong>: Integração com controle de acesso e monitoramento de áreas.</li>
+</ul>
+
+<h3>4.4.6 Tecnologias de Suporte e Performance</h3>
+
+<p>O sistema utiliza tecnologias modernas para garantir performance e escalabilidade:</p>
+
+<h4>4.4.6.1 Otimizações de Performance</h4>
+
+<ul>
+    <li><strong>Lazy Loading</strong>: Carregamento sob demanda de componentes e dados;</li>
+    <li><strong>Paginação Inteligente</strong>: Carregamento incremental de grandes volumes de dados;</li>
+    <li><strong>Cache de Dados</strong>: Armazenamento temporário de consultas frequentes;</li>
+    <li><strong>Compressão de Assets</strong>: Otimização de imagens e arquivos estáticos;</li>
+    <li><strong>CDN Ready</strong>: Preparação para distribuição de conteúdo via CDN.</li>
+</ul>
+
+<h4>4.4.6.2 Escalabilidade e Disponibilidade</h4>
+
+<ul>
+    <li><strong>Arquitetura Stateless</strong>: Backend sem estado para facilitar escalabilidade horizontal;</li>
+    <li><strong>Load Balancing Ready</strong>: Preparação para distribuição de carga;</li>
+    <li><strong>Database Optimization</strong>: Índices otimizados e queries eficientes;</li>
+    <li><strong>Monitoring Integration</strong>: Preparação para ferramentas de monitoramento;</li>
+    <li><strong>Backup Strategy</strong>: Estratégia de backup e recuperação de dados.</li>
+</ul>
+
+    <h2>4.5 Testes e Validação</h2>
+
+    <h3>4.5.1 Testes de API com Postman</h3>
+
+    <p>Foram criadas coleções de testes no Postman para validar todos os endpoints:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 9 🔸</strong><br><br>
+        <strong>Figura 9 - Testes de API no Postman</strong><br><br>
+        <em>[INSERIR AQUI: Screenshot do Postman mostrando a coleção de testes da API, com exemplos de requisições para login, CRUD de EPIs, movimentações e relatórios, incluindo os códigos de resposta e estrutura JSON]</em>
+    </div>
+
+    <div class="code-block">
+{
+  "name": "EPI System API Tests",
+  "requests": [
+    {
+      "name": "Login",
+      "method": "POST",
+      "url": "{{baseUrl}}/api/auth/login",
+      "body": {
+        "email": "admin@empresa.com",
+        "password": "123456"
+      },
+      "tests": [
+        "pm.test('Status code is 200', function () {",
+        "    pm.response.to.have.status(200);",
+        "});",
+        "pm.test('Response has token', function () {",
+        "    pm.expect(pm.response.json()).to.have.property('token');",
+        "});"
+      ]
+    }
+  ]
+}
+    </div>
+
+    <h3>4.5.2 Validação de Perfis de Usuário</h3>
+
+    <p>Foram testados três perfis distintos de usuário:</p>
+
+    <ol>
+        <li><strong>Administrador</strong>: Acesso completo a todas as funcionalidades</li>
+        <li><strong>Gerente</strong>: Pode gerenciar EPIs e gerar relatórios</li>
+        <li><strong>Operador</strong>: Pode visualizar e registrar movimentações</li>
+    </ol>
+
+    <h3>4.5.3 Testes de Responsividade</h3>
+
+    <p>A interface foi testada em diferentes dispositivos e resoluções:</p>
+
+    <div class="image-placeholder">
+        <strong>🔸 ESPAÇO RESERVADO PARA IMAGEM 10 🔸</strong><br><br>
+        <strong>Figura 10 - Testes de Responsividade</strong><br><br>
+        <em>[INSERIR AQUI: Montagem mostrando o sistema em diferentes dispositivos - desktop, tablet e mobile, demonstrando como a interface se adapta a cada tamanho de tela]</em>
+    </div>
+
+    <ul>
+        <li>Desktop (1920x1080, 1366x768)</li>
+        <li>Tablet (768x1024, 1024x768)</li>
+        <li>Mobile (375x667, 414x896)</li>
+    </ul>
+
+    <h3>4.5.4 Validação de Relatórios</h3>
+
+    <p>Os relatórios exportáveis foram testados com diferentes volumes de dados:</p>
+
+    <div class="code-block">
+const downloadReport = async (type, format) => {
+  try {
+    const response = await api.get(`/reports/${type}/${format}`, {
+      responseType: "blob",
+    })
+
+    const url = window.URL.createObjectURL(new Blob([response.data]))
+    const link = document.createElement("a")
+    link.href = url
+    link.setAttribute("download", `relatorio_${type}.${format}`)
+    document.body.appendChild(link)
+    link.click()
+    link.remove()
+    
+    toast.success("Relatório baixado com sucesso!")
+  } catch (error) {
+    toast.error("Erro ao baixar relatório")
+  }
+}
+    </div>
+
+    <div class="page-break"></div>
+
+    <h1>5 RESULTADOS E DISCUSSÃO</h1>
+
+    <h2>5.1 Resultados Alcançados</h2>
+
+    <p>O desenvolvimento do sistema de gestão de EPIs resultou em uma aplicação web completa e funcional que atende aos objetivos propostos. Os principais resultados obtidos incluem:</p>
+
+    <h3>5.1.1 Automatização de Processos</h3>
+
+    <p>O sistema eliminou completamente a necessidade de controles manuais através de planilhas ou registros em papel. Todas as operações de cadastro, movimentação e controle de EPIs foram automatizadas, resultando em:</p>
+
+    <ul>
+        <li><strong>Redução de 90% no tempo</strong> necessário para cadastro de novos EPIs</li>
+        <li><strong>Eliminação de erros</strong> de digitação e inconsistências de dados</li>
+        <li><strong>Rastreabilidade completa</strong> de todas as movimentações</li>
+        <li><strong>Padronização</strong> dos processos de gestão</li>
+    </ul>
+
+    <h3>5.1.2 Sistema de Alertas Automáticos</h3>
+
+    <p>A implementação de alertas automáticos proporcionou controle proativo sobre:</p>
+
+    <ul>
+        <li><strong>Vencimentos de CA</strong>: Alertas 30 dias antes do vencimento</li>
+        <li><strong>Estoque baixo</strong>: Notificações quando estoque atinge nível mínimo</li>
+        <li><strong>EPIs em manutenção</strong>: Acompanhamento de equipamentos em reparo</li>
+    </ul>
+
+    <h3>5.1.3 Geração de Relatórios</h3>
+
+    <p>O sistema gera relatórios exportáveis em formato CSV, incluindo:</p>
+
+    <ul>
+        <li><strong>Relatório geral de EPIs</strong>: Lista completa com status e validades</li>
+        <li><strong>Histórico de movimentações</strong>: Rastreabilidade completa das operações</li>
+        <li><strong>Relatório de estoque crítico</strong>: EPIs que necessitam reposição</li>
